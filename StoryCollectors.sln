@@ -5,9 +5,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lcficmbs", "lcficmbs", "{6AF2AEEA-D55C-42AA-9CC1-9AE9570E4077}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryParser", "src\lcficmbs\StoryParser\StoryParser.csproj", "{5DF723DB-D0CB-4B4E-BE25-E2626C4EBBFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5DF723DB-D0CB-4B4E-BE25-E2626C4EBBFE} = {6AF2AEEA-D55C-42AA-9CC1-9AE9570E4077}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DF723DB-D0CB-4B4E-BE25-E2626C4EBBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF723DB-D0CB-4B4E-BE25-E2626C4EBBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF723DB-D0CB-4B4E-BE25-E2626C4EBBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF723DB-D0CB-4B4E-BE25-E2626C4EBBFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
