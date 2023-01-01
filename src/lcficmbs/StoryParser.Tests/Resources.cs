@@ -13,6 +13,17 @@ public static class Resources
     return resourceStream;
   }
 
+  public static Stream GetTocMultiPart ()
+  {
+    var resourceStream = GetTestData("toc-multipart.html");
+    return resourceStream;
+  }
+
+  public static Stream GetTocSinglePart ()
+  {
+    var resourceStream = GetTestData("toc-singlepart.html");
+    return resourceStream;
+  }
 
   private static Stream GetTestData (string localResourceName)
   {
