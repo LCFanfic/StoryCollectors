@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryParser", "src\lcficmbs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryParser.Tests", "src\lcficmbs\StoryParser.Tests\StoryParser.Tests.csproj", "{7BA207B3-045E-413C-BD57-EB3BC4AE3C62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "src\lcficmbs\Console\Console.csproj", "{62AF5450-49F0-411B-9B5D-282E658252B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5DF723DB-D0CB-4B4E-BE25-E2626C4EBBFE} = {6AF2AEEA-D55C-42AA-9CC1-9AE9570E4077}
 		{7BA207B3-045E-413C-BD57-EB3BC4AE3C62} = {6AF2AEEA-D55C-42AA-9CC1-9AE9570E4077}
+		{62AF5450-49F0-411B-9B5D-282E658252B8} = {6AF2AEEA-D55C-42AA-9CC1-9AE9570E4077}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5DF723DB-D0CB-4B4E-BE25-E2626C4EBBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -29,5 +32,9 @@ Global
 		{7BA207B3-045E-413C-BD57-EB3BC4AE3C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BA207B3-045E-413C-BD57-EB3BC4AE3C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BA207B3-045E-413C-BD57-EB3BC4AE3C62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62AF5450-49F0-411B-9B5D-282E658252B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62AF5450-49F0-411B-9B5D-282E658252B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62AF5450-49F0-411B-9B5D-282E658252B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62AF5450-49F0-411B-9B5D-282E658252B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
