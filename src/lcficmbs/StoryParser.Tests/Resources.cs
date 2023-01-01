@@ -25,6 +25,13 @@ public static class Resources
     return resourceStream;
   }
 
+  public static Stream GetStoryPart ()
+  {
+    var resourceStream = GetTestData("story-part.html");
+    return resourceStream;
+  }
+
+
   private static Stream GetTestData (string localResourceName)
   {
     var resourceName = typeof(Resources).Namespace + ".TestData." + localResourceName;
