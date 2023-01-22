@@ -3,6 +3,7 @@
 
 using System.Globalization;
 using System.Net.Mime;
+using System.Text;
 using HtmlAgilityPack;
 
 namespace LCFanfic.StoryCollectors.lcficmbs.StoryParser;
@@ -31,7 +32,7 @@ public class StoryPartParser
     var forum = GetForum(breadcrumbs);
 
     var length = story.Length;
-    var words = length / 6;
+    var words = GetWordCount(story);
 
     string? summary = GetSummary(story);
 
@@ -50,6 +51,22 @@ public class StoryPartParser
       return Forum.FanficChallenge;
     else
       return Forum.Other;
+  }
+
+  private int GetWordCount (string story)
+  {
+    var wordCount = 0;
+    var lastChar = ' ';
+
+    foreach (var currentChar in story)
+    {
+      if (Char.IsWhiteSpace(lastChar) && !Char.IsWhiteSpace(currentChar))
+        wordCount++;
+
+      lastChar = currentChar;
+    }
+
+    return wordCount;
   }
 
   private string? GetSummary (string story)

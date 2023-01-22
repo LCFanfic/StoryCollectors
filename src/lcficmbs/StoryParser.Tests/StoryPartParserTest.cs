@@ -30,7 +30,7 @@ public class StoryPartParserTest
                 Title: "A Lucky Strike 1/1",
                 CompletionDate: new DateTime(2022, 11, 18, 21, 59, 00),
                 LengthInBytes: 6710,
-                WordCount: 1118,
+                WordCount: 1166,
                 Forum: Forum.Fanfic,
                 Summary: "As the events in Bowled Over continue, Lois' luck just keeps improving...enough that even she starts to wonder how she's playing so well."));
   }
@@ -301,6 +301,21 @@ public class StoryPartParserTest
     var storyPartMetaData = _storyPartParser.GetStoryPartMetadata(testData);
 
     storyPartMetaData.Summary.Should().Be(null);
+  }
+
+  [Fact]
+  public void GivenTestData_WithStoryContent_ThenReturnsWordCountBasedOnWhitespaceAndLineBreaks ()
+  {
+    var body = $"""
+        Summary:<br>this is the summary...<br>this is the three-year-old content<br>some more content
+        """;
+
+    using var testData = GetTestDataWithCustomBody(body);
+
+    var storyPartMetaData = _storyPartParser.GetStoryPartMetadata(testData);
+
+    storyPartMetaData.LengthInBytes.Should().Be(88);
+    storyPartMetaData.WordCount.Should().Be(13);
   }
 
   private Stream GetTestDataWithCustomBody (string body)
