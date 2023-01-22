@@ -5,4 +5,4 @@ using System;
 
 namespace LCFanfic.StoryCollectors.lcficmbs.StoryParser;
 
-public record StoryMetadata(Uri Toc, Rating Rating, string Title, string Author, DateTime? CompletionDate, int? LengthInBytes, int? WordCount);
+public record StoryMetadata(Uri Toc, Rating Rating, string Title, string Author, DateTime? CompletionDate, int? LengthInBytes, int? WordCount, string? Summary);

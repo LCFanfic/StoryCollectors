@@ -3,4 +3,4 @@
 
 namespace LCFanfic.StoryCollectors.lcficmbs.StoryParser;
 
-public record StoryPartMetadata(string Title, string Author, DateTime CompletionDate, int LengthInBytes, int WordCount, Forum Forum);
+public record StoryPartMetadata(string Title, string Author, DateTime CompletionDate, int LengthInBytes, int WordCount, Forum Forum, string? Summary);
