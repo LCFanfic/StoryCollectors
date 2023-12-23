@@ -43,9 +43,9 @@ public class StoryPartParser
   {
     var hrefs = breadcrumbs.Select(a => a.GetAttributeValue("href", null)).ToArray();
 
-    if (hrefs.Contains("/ubb/ubbthreads.php/forums/1/1/lois-and-clark-fanfic", StringComparer.OrdinalIgnoreCase))
+    if (hrefs.Contains("/ubb/ubbthreads.php/forums/1/1/lois-clark-fanfic", StringComparer.OrdinalIgnoreCase))
       return Forum.Fanfic;
-    else if (hrefs.Contains("/ubb/ubbthreads.php/forums/2/1/lois-and-clark-nfanfic", StringComparer.OrdinalIgnoreCase))
+    else if (hrefs.Contains("/ubb/ubbthreads.php/forums/2/1/lois-clark-nfanfic", StringComparer.OrdinalIgnoreCase))
       return Forum.NFanfic;
     else if (hrefs.Contains("/ubb/ubbthreads.php/forums/3/1/fanfic-challenge", StringComparer.OrdinalIgnoreCase))
       return Forum.FanficChallenge;
