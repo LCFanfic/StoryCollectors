@@ -38,7 +38,7 @@ public static class Program
     var storyReader = new StoryReader(System.Console.Out, httpClient, rating);
     var storyMetadata = storyReader
         .ReadStoriesFromTableOfContents(tocPages: rating ==Rating.GFic ? 1..11 : 1..1, includeIncomplete: false)
-        .Where(story => story.CompletionDate?.Year == 2022);
+        .Where(story => story.CompletionDate?.Year == 2023);
 
     var jsonSerializerOptions = new JsonSerializerOptions(JsonSerializerOptions.Default);
     jsonSerializerOptions.WriteIndented = true;
