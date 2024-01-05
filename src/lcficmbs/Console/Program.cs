@@ -35,10 +35,16 @@ public static class Program
       handler.CookieContainer = sessionCookieFactory.GetSessionCookiesAsync(username, password);
     }
 
+    const int monthApril = 4;
+    var today = DateTime.Today;
+    var previousYear = today.Year - 1;
+    var currentYear = today.Year;
+    var collectionYear = today.Month <= monthApril ? previousYear : currentYear;
+
     var storyReader = new StoryReader(System.Console.Out, httpClient, rating);
     var storyMetadata = storyReader
         .ReadStoriesFromTableOfContents(tocPages: rating == Rating.GFic ? 1..6 : 1..1, includeIncomplete: false)
-        .Where(story => story.CompletionDate?.Year == 2023);
+        .Where(story => story.CompletionDate?.Year == collectionYear);
 
     var jsonSerializerOptions = new JsonSerializerOptions(JsonSerializerOptions.Default);
     jsonSerializerOptions.WriteIndented = true;
