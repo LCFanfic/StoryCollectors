@@ -1,6 +1,8 @@
 ﻿// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: COPYRIGHT Lois & Clark Fanfiction Tooling
 
+using System.Runtime.CompilerServices;
+
 namespace LCFanfic.StoryCollectors.lcficmbs.StoryParser.Tests;
 
 public class TocEntryParserTest
@@ -46,6 +48,43 @@ public class TocEntryParserTest
             )
         .And.HaveCount(19);
   }
+
+
+  [Theory]
+  [InlineData(" Comments ")]
+  [InlineData(" comments for part")]
+  [InlineData(" FDK ")]
+  [InlineData(" fdk for story")]
+  [InlineData(" Feedback ")]
+  [InlineData(" feedback for vignette")]
+  [InlineData("Story comments ")]
+  [InlineData("Story fdk ")]
+  [InlineData("Vignette feedback ")]
+  public void IsCommentThread_WithCommentText_ReturnsTrue (string linkText)
+  {
+    var result = CallIsCommentThread(_tocEntryParser, linkText);
+    result.Should().BeTrue();
+  }
+
+  [Theory]
+  [InlineData("Part 12")]
+  [InlineData("Complete Story")]
+  [InlineData("Complete Vignette")]
+  [InlineData("Some Text")]
+  [InlineData("Some text and Comments ")]
+  [InlineData("Some text and comments for story")]
+  [InlineData("Some text and Feedback ")]
+  [InlineData("Some text and feedback for ficlet")]
+  [InlineData("Some text and FDK ")]
+  [InlineData("Some text and fdk for vignette")]
+  public void IsCommentThread_WithStoryText_ReturnsFalse (string linkText)
+  {
+    var result = CallIsCommentThread(_tocEntryParser, linkText);
+    result.Should().BeFalse();
+  }
+
+  [UnsafeAccessor(UnsafeAccessorKind.Method, Name = "IsCommentThread")]
+  private static extern bool CallIsCommentThread(TocEntryParser parser, string linkText);
 
   //https://www.lcficmbs.com/ubb/ubbthreads.php/topics/170794
   //https://www.lcficmbs.com/ubb/ubbthreads.php/topics/292983/so-far-away-by-ksarasara-complete#Post292983

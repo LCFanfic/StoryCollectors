@@ -36,14 +36,20 @@ public class TocEntryParser
       return true;
     else if (trimmedLinkText.StartsWith("Comments", StringComparison.OrdinalIgnoreCase))
       return true;
+    else if (trimmedLinkText.EndsWith(" and Comments", StringComparison.OrdinalIgnoreCase))
+      return false;
     else if (trimmedLinkText.EndsWith("Comments", StringComparison.OrdinalIgnoreCase))
       return true;
     else if (trimmedLinkText.StartsWith("FDK", StringComparison.OrdinalIgnoreCase))
       return true;
+    else if (trimmedLinkText.EndsWith(" and FDK", StringComparison.OrdinalIgnoreCase))
+      return false;
     else if (trimmedLinkText.EndsWith("FDK", StringComparison.OrdinalIgnoreCase))
       return true;
     else if (trimmedLinkText.StartsWith("Feedback", StringComparison.OrdinalIgnoreCase))
       return true;
+    else if (trimmedLinkText.EndsWith(" and Feedback", StringComparison.OrdinalIgnoreCase))
+      return false;
     else if (trimmedLinkText.EndsWith("Feedback", StringComparison.OrdinalIgnoreCase))
       return true;
     else
