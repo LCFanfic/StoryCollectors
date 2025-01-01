@@ -74,7 +74,7 @@ internal class StoryReader
         Rating: _rating,
         Title: toc.StoryTitle,
         Author: toc.StoryAuthor,
-        CompletionDate: toc.IsComplete ? storyParts.Max(p => p.CompletionDate) : null,
+        CompletionDate: toc.IsComplete ? storyParts.Max(p => (DateTime?)p.CompletionDate) : null,
         LengthInBytes: toc.IsComplete ? storyParts.Sum(p => p.LengthInBytes) : null,
         WordCount: toc.IsComplete ? storyParts.Sum(p => p.WordCount) : null,
         Summary: storyParts.Where(p => !string.IsNullOrEmpty(p.Summary)).OrderBy(p => p.CompletionDate).Select(p => p.Summary).FirstOrDefault()
