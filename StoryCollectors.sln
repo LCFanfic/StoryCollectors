@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{77B6D740-4061-451B-9C8B-88591BC7A12B}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		src\Directory.Packages.props = src\Directory.Packages.props
+		src\Directory.Build.props = src\Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lcficmbs", "lcficmbs", "{6AF2AEEA-D55C-42AA-9CC1-9AE9570E4077}"
