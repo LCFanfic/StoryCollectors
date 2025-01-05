@@ -12,8 +12,4 @@
     <ProjectReference Include="..\StoryParser\StoryParser.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Playwright" />
-  </ItemGroup>
-
 </Project>
