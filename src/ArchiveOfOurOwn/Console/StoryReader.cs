@@ -29,9 +29,17 @@ public class StoryReader
             url =>
             {
               _logOutput.WriteLine(url);
-              return _httpClient.GetStreamAsync(url).GetAwaiter().GetResult();
+              try
+              {
+                return _httpClient.GetStreamAsync(url).GetAwaiter().GetResult();
+              }
+              catch (Exception ex)
+              {
+                _logOutput.WriteLine(ex.Message);
+                return null;
+              }
             })
-        .SelectMany(file => worksListingParser.GetStoryEntries(file))
+        .SelectMany(file => file != null ? worksListingParser.GetStoryEntries(file) : Enumerable.Empty<StoryMetadata>())
         .Select(story =>
         {
           _logOutput.WriteLine(story.Title + " by " + story.Author);
