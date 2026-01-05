@@ -12,7 +12,7 @@ public class WorksListingParserTest
 
   public WorksListingParserTest ()
   {
-    _worksListingParser = new WorksListingParser();
+    _worksListingParser = new WorksListingParser(new Uri ("https://archiveofourown.org/collections/2024_Kerth_Award_Eligible_Stories/works/") );
   }
 
   [Fact]
@@ -107,7 +107,7 @@ public class WorksListingParserTest
         <li id="work_123456" class="work blurb group work-123456 user-98765" role="article">
           <div class="header module">
             <h4 class="heading">
-              <a href="/works/123456">The Title</a>
+              <a href="/collections/2024_Kerth_Award_Eligible_Stories/works/123456">The Title</a>
               by
               <a rel="author" href="/users/TheUser/pseuds/TheUser">TheUser</a>
             </h4>

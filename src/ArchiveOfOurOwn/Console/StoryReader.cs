@@ -20,12 +20,10 @@ public class StoryReader
 
   public IEnumerable<StoryMetadata> ReadStoriesFromCollection (Range pages, int collectionYear)
   {
-    // https://archiveofourown.org/collections/{collectionYear}_Kerth_Award_Eligible_Stories/works
+    var baseUrl = $"https://archiveofourown.org/collections/{collectionYear}_Kerth_Award_Eligible_Stories/works/";
+    var worksListingParser = new StoryParser.WorksListingParser(new Uri(baseUrl));
     return Enumerable.Range(pages.Start.Value, pages.End.Value)
-        .Select(
-            page =>
-                $"https://archiveofourown.org/works?work_search[sort_column]=created_at&work_search[complete]=T&work_search[date_from]={collectionYear}-01-01&work_search[date_to]={collectionYear}-12-31&commit=Sort+and+Filter&fandom_id=11144&page={page}")
-        .SelectMany(baseUrl => new[] { "CalliopeWayne", "90sfangirl79" }.Select(author => baseUrl + "&user_id=" + author))
+        .Select(page => baseUrl + "?page=" + page)
         .Select(url => new Uri(url))
         .Select(
             url =>
@@ -33,7 +31,7 @@ public class StoryReader
               _logOutput.WriteLine(url);
               return _httpClient.GetStreamAsync(url).GetAwaiter().GetResult();
             })
-        .SelectMany(file => new StoryParser.WorksListingParser().GetStoryEntries(file))
+        .SelectMany(file => worksListingParser.GetStoryEntries(file))
         .Select(story =>
         {
           _logOutput.WriteLine(story.Title + " by " + story.Author);

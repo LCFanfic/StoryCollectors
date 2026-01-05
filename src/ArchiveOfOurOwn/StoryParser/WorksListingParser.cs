@@ -10,6 +10,13 @@ namespace LCFanfic.StoryCollectors.ArchiveOfOurOwn.StoryParser;
 
 public class WorksListingParser
 {
+  private readonly Uri _baseUrl;
+
+  public WorksListingParser (Uri baseUrl)
+  {
+    _baseUrl = baseUrl;
+  }
+
   public StoryMetadata[] GetStoryEntries (Stream html)
   {
     var doc = new HtmlDocument();
@@ -25,11 +32,17 @@ public class WorksListingParser
     Trace.Assert(node.NodeType == HtmlNodeType.Element, $"Expected node.NodeType == HtmlNodeType.Element but was '{node.NodeType}'");
     Trace.Assert(node.Name == "li", $"Expected node.Name == 'li' but was '{node.Name}'");
 
-    var storyLinkNode = node.SelectSingleNode(".//h4[@class='heading']/a[starts-with(@href, '/works/')]");//
+    var basePath = _baseUrl.AbsolutePath;
+    Trace.Assert(basePath.StartsWith("/"), $"Base path '{basePath}' should start with '/'");
+    Trace.Assert(basePath.EndsWith("/"), $"Base path '{basePath}' should end with '/'");
+    var storyLinkNode = node.SelectSingleNode($".//h4[@class='heading']/a[starts-with(@href, '{basePath}')]");
     Trace.Assert(storyLinkNode != null, "storyLinkNode != null");
 
     var linkUrlBuilder = new UriBuilder("https", "archiveofourown.org");
     var postLinkHref = storyLinkNode.GetAttributeValue("href", "");
+    if (postLinkHref.StartsWith(basePath, StringComparison.InvariantCultureIgnoreCase))
+      postLinkHref = "/works/" + postLinkHref.Substring(basePath.Length);
+
     linkUrlBuilder.Path = postLinkHref;
     var storyUrl = linkUrlBuilder.Uri;
     var storyTitle = storyLinkNode.InnerText;
