@@ -15,6 +15,7 @@ public static class Program
 
     using var handler = new HttpClientHandler();
     using var httpClient = new HttpClient(handler);
+    httpClient.DefaultRequestHeaders.Add("User-Agent", "curl/8.16.0");
 
     const int monthApril = 4;
     var today = DateTime.Today;
